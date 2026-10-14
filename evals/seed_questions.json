@@ -1,0 +1,272 @@
+{
+    "meta": {
+      "version": "0.1",
+      "created": "2026-10-14",
+      "default_jurisdiction": "UAE federal private sector (Federal Decree-Law 33/2021 as amended)",
+      "source_checked": "MOHRE consolidated PDF of Decree-Law 33/2021 'and its amendments' (includes Cabinet Resolution 1/2022 Executive Regulations; only the Decree-Law part was read)",
+      "source_status_legend": {
+        "verified": "Article text read in the official consolidated PDF",
+        "todo": "Not verified yet: find and read the source before using this item in an eval run"
+      },
+      "note": "Evaluation material for a software project. Not legal advice."
+    },
+    "items": [
+      {
+        "id": "fact-01",
+        "category": "factual",
+        "question": "Am I entitled to sick leave?",
+        "required_facts": [
+          "After probation, up to 90 days of sick leave per year, continuous or intermittent",
+          "First 15 days full pay, next 30 days half pay, remainder unpaid",
+          "Must inform the employer within 3 working days and provide a medical report from a medical entity",
+          "No paid sick leave during probation; employer may grant unpaid sick leave"
+        ],
+        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "31(1)-(3)", "status": "verified"}],
+        "jurisdiction": "federal",
+        "should_abstain": false
+      },
+      {
+        "id": "fact-02",
+        "category": "factual",
+        "question": "Is there maternity leave?",
+        "required_facts": [
+          "60 days: first 45 days full wage, next 15 days half wage",
+          "Up to 45 additional unpaid days if sickness of the mother or child resulting from pregnancy or childbirth prevents return, with a medical certificate",
+          "Termination because of pregnancy or maternity leave is not permitted"
+        ],
+        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "30(1), 30(2), 30(8)", "status": "verified"}],
+        "jurisdiction": "federal",
+        "should_abstain": false
+      },
+      {
+        "id": "fact-03",
+        "category": "factual",
+        "question": "When is my salary supposed to arrive in my bank account?",
+        "required_facts": [
+          "Employer must pay wages on their due dates under the Ministry's regulations and the Implementing Regulation",
+          "The law does not set one universal payday; the due date comes from the contract and payroll arrangements",
+          "Must not invent a specific date"
+        ],
+        "sources": [
+          {"doc": "Federal Decree-Law 33/2021", "article": "22(2)", "status": "verified"},
+          {"doc": "Cabinet Resolution 1/2022 (Executive Regulations)", "article": "16 (listed as 'Wages' in the table of contents)", "status": "todo"}
+        ],
+        "jurisdiction": "federal",
+        "should_abstain": false
+      },
+      {
+        "id": "fact-04",
+        "category": "factual",
+        "question": "Do I have unemployment compensation?",
+        "required_facts": [
+          "Not established by Decree-Law 33/2021 itself; falls under a separate unemployment insurance scheme",
+          "Whether the user is covered depends on their subscription status"
+        ],
+        "sources": [{"doc": "Unemployment insurance (ILOE) legislation", "article": "unknown", "status": "todo"}],
+        "jurisdiction": "federal",
+        "should_abstain": false,
+        "notes": "Do not use in an eval run until the ILOE instrument and its eligibility rules are found and read. Remove any figures (percentages, durations) until sourced."
+      },
+      {
+        "id": "fact-05",
+        "category": "factual",
+        "question": "Is it mandatory for a company to sponsor visas?",
+        "required_facts": [
+          "No one may work or be employed in the UAE without a work permit from the Ministry",
+          "The employer may not charge the worker recruitment and employment fees or costs, directly or indirectly",
+          "States that residence visa sponsorship rules are not covered by the sources it has"
+        ],
+        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "6(1), 6(4)", "status": "verified"}],
+        "jurisdiction": "federal",
+        "should_abstain": false,
+        "notes": "Partial-coverage case: should answer the work-permit and cost points, then abstain on residence sponsorship."
+      },
+      {
+        "id": "num-01",
+        "category": "numeric",
+        "question": "I have worked here for 3 full years. What is the minimum paid annual leave I am entitled to per year?",
+        "expected_value": 30,
+        "unit": "days",
+        "tolerance": 0,
+        "required_facts": ["Not less than 30 days for each year of service"],
+        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "29(1)(a)", "status": "verified"}],
+        "jurisdiction": "federal",
+        "should_abstain": false,
+        "jurisdiction_behavior": "State that the answer assumes UAE federal private-sector law and that free zones (e.g. DIFC, ADGM) have their own rules.",
+        "notes": "The article says 'thirty days' and does not say 'calendar days'. Do not require that wording."
+      },
+      {
+        "id": "num-02",
+        "category": "numeric",
+        "question": "I joined on 1 January 2026 and I resign on 31 July 2026 (7 months of service). How many annual leave days have I earned at minimum?",
+        "expected_value": 14,
+        "unit": "days",
+        "tolerance": 0,
+        "required_facts": ["Two days per month when service is more than six months and less than a year"],
+        "sources": [
+          {"doc": "Federal Decree-Law 33/2021", "article": "29(1)(b)", "status": "verified"},
+          {"doc": "Federal Decree-Law 33/2021", "article": "29(9)", "status": "verified"}
+        ],
+        "jurisdiction": "federal",
+        "should_abstain": false,
+        "notes": "Check how the Executive Regulation counts months before fixing the expected value. Article 29(9) says unused accrued leave is paid out on exit at the basic wage."
+      },
+      {
+        "id": "num-03",
+        "category": "numeric",
+        "question": "My monthly basic salary is AED 15,000 and I have completed exactly 4 years of full-time service. What end-of-service gratuity am I entitled to?",
+        "expected_value": 42000,
+        "unit": "AED",
+        "tolerance": 0,
+        "calculation": "21 days x 4 years = 84 days of basic wage; daily wage = 15,000 / 30; 84 x 500 = 42,000",
+        "required_facts": [
+          "21 days of basic wage for each of the first five years",
+          "Calculated on the basic wage only, not allowances",
+          "Requires at least one year of continuous service"
+        ],
+        "sources": [
+          {"doc": "Federal Decree-Law 33/2021", "article": "51(2)(a), 51(5), 51(6)", "status": "verified"},
+          {"doc": "Federal Decree-Law 33/2021", "article": "67 (a month is 30 days)", "status": "verified"}
+        ],
+        "jurisdiction": "federal",
+        "should_abstain": false,
+        "notes": "One law-firm commentary says gratuity is calculated on working days rather than calendar days. Check the Executive Regulation and the MOHRE calculator before relying on the 30-day divisor."
+      },
+      {
+        "id": "num-04",
+        "category": "numeric",
+        "question": "My contract says 60 days notice. How much notice do I have to give if I resign?",
+        "expected_value": 60,
+        "unit": "days",
+        "tolerance": 0,
+        "required_facts": [
+          "Notice period is the one agreed in the contract",
+          "The law requires it to be between 30 and 90 days",
+          "Notice must be in writing"
+        ],
+        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "43(1)-(2)", "status": "verified"}],
+        "jurisdiction": "federal",
+        "should_abstain": false,
+        "jurisdiction_behavior": "State the federal-law assumption and note that free zones may differ."
+      },
+      {
+        "id": "num-05",
+        "category": "numeric",
+        "question": "What are the official maximum working hours?",
+        "expected_value": 48,
+        "unit": "hours per week (8 per day)",
+        "tolerance": 0,
+        "required_facts": ["Maximum normal hours are 8 per day or 48 per week"],
+        "sources": [
+          {"doc": "Federal Decree-Law 33/2021", "article": "17(1)", "status": "verified"},
+          {"doc": "Cabinet Resolution 1/2022 (Executive Regulations)", "article": "15 (listed as 'Working Hours'); Ramadan hours", "status": "todo"}
+        ],
+        "jurisdiction": "federal",
+        "should_abstain": false,
+        "notes": "Article 17(4) delegates Ramadan working hours to the Implementing Regulation, so the Ramadan reduction is not in Article 17 itself. Do not cite the Ramadan reduction until the Executive Regulation article is read."
+      },
+      {
+        "id": "hol-01",
+        "category": "holidays",
+        "question": "Which are the public holidays for 2027?",
+        "required_facts": [
+          "Employees are entitled to paid public holidays defined by a Cabinet resolution",
+          "Islamic holiday dates are expected dates, not confirmed",
+          "Must not present moon-sighting dates as final"
+        ],
+        "expected_dates_unconfirmed": {
+          "New Year": "Fri 1 Jan 2027",
+          "Eid Al-Fitr": "around 9-12 Mar 2027",
+          "Arafah Day": "around Sat 15 May 2027",
+          "Eid Al-Adha": "around 16-18 May 2027",
+          "Hijri New Year": "around Sun 6 Jun 2027",
+          "Prophet's Birthday": "around Sat 14 Aug 2027",
+          "National Day": "Thu-Fri 2-3 Dec 2027"
+        },
+        "sources": [
+          {"doc": "Federal Decree-Law 33/2021", "article": "28(1)", "status": "verified"},
+          {"doc": "Cabinet resolution on public holidays", "article": "unknown (resolution number not confirmed)", "status": "todo"}
+        ],
+        "jurisdiction": "federal",
+        "should_abstain": false,
+        "notes": "Find and read the holiday resolution and the official UAE government portal page, then confirm the list and durations."
+      },
+      {
+        "id": "hol-02",
+        "category": "holidays",
+        "question": "When will the dates of the holidays be confirmed?",
+        "required_facts": [
+          "Fixed Gregorian holidays are known in advance",
+          "Islamic holidays are announced close to the date, based on moon sighting",
+          "There is no single confirmation date for all holidays"
+        ],
+        "sources": [{"doc": "UAE government portal, public holidays page", "article": "n/a", "status": "todo"}],
+        "jurisdiction": "federal",
+        "should_abstain": false
+      },
+      {
+        "id": "hol-03",
+        "category": "holidays",
+        "question": "What do the holiday dates depend on?",
+        "required_facts": [
+          "Gregorian holidays (New Year, National Day) are fixed dates",
+          "Islamic holidays depend on the Hijri lunar calendar and official moon sighting",
+          "Eid Al-Fitr start depends on whether Ramadan completes 29 or 30 days"
+        ],
+        "sources": [{"doc": "UAE government portal, public holidays page", "article": "n/a", "status": "todo"}],
+        "jurisdiction": "federal",
+        "should_abstain": false
+      },
+      {
+        "id": "abs-01",
+        "category": "unsure",
+        "question": "What is my pay?",
+        "required_facts": ["Says it does not have the user's contract or payroll data and points to the contract or payslip"],
+        "sources": [],
+        "jurisdiction": "n/a",
+        "should_abstain": true
+      },
+      {
+        "id": "abs-02",
+        "category": "unsure",
+        "question": "Am I going to get a raise this year?",
+        "required_facts": ["Says this depends on the employer's policy or decision and is not covered by the law sources"],
+        "sources": [],
+        "jurisdiction": "n/a",
+        "should_abstain": true
+      },
+      {
+        "id": "abs-03",
+        "category": "unsure",
+        "question": "Can I ask for a desk change?",
+        "required_facts": ["Says this is a company policy matter not covered by the legal sources"],
+        "sources": [],
+        "jurisdiction": "n/a",
+        "should_abstain": true
+      },
+      {
+        "id": "jur-01",
+        "category": "jurisdiction",
+        "question": "I work in a DIFC company. How many days of annual leave do I get?",
+        "required_facts": [
+          "Says its v1 sources cover UAE federal private-sector law only",
+          "Does not answer with the federal number as if it applied to DIFC"
+        ],
+        "sources": [],
+        "jurisdiction": "difc",
+        "should_abstain": true
+      },
+      {
+        "id": "jur-02",
+        "category": "jurisdiction",
+        "question": "How many days of annual leave do I get?",
+        "required_facts": [
+          "Answers 30 days per year under UAE federal law",
+          "States the federal-law assumption and says free zones may differ"
+        ],
+        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "29(1)(a)", "status": "verified"}],
+        "jurisdiction": "federal",
+        "should_abstain": false
+      }
+    ]   
+}
