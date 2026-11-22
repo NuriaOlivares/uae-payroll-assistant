@@ -3,12 +3,14 @@
       "version": "0.1",
       "created": "2026-10-14",
       "default_jurisdiction": "UAE federal private sector (Federal Decree-Law 33/2021 as amended)",
-      "source_checked": "MOHRE consolidated PDF of Decree-Law 33/2021 'and its amendments' (includes Cabinet Resolution 1/2022 Executive Regulations; only the Decree-Law part was read)",
+      "source_checked": "Official UAE legislation portal sources checked for Decree-Law 33/2021, Cabinet Resolution 1/2022, Cabinet Resolution 27/2024, Federal Decree-Law 13/2022, Cabinet Resolution 97/2022, and the UAE Government public-holidays page. See per-item source URLs and verification notes; residence-visa sponsorship remains out of scope.",
       "source_status_legend": {
-        "verified": "Article text read in the official consolidated PDF",
-        "todo": "Not verified yet: find and read the source before using this item in an eval run"
+        "verified": "Relevant article text or official government page text was retrieved and checked; see source URL and article/page reference.",
+        "partially_verified": "Some legal points are supported, but the question extends beyond the verified source coverage.",
+        "todo": "Not verified yet: find and read the relevant official source before using the item in an evaluation run."
       },
-      "note": "Evaluation material for a software project. Not legal advice."
+      "note": "Evaluation material for a software project. Not legal advice. Applies by default to UAE federal private-sector employment; confirm jurisdiction and current amendments.",
+      "updated": "2026-10-14"
     },
     "items": [
       {
@@ -21,7 +23,14 @@
           "Must inform the employer within 3 working days and provide a medical report from a medical entity",
           "No paid sick leave during probation; employer may grant unpaid sick leave"
         ],
-        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "31(1)-(3)", "status": "verified"}],
+        "sources": [
+          {
+            "doc": "Federal Decree-Law 33/2021",
+            "article": "31(1)-(3)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          }
+        ],
         "jurisdiction": "federal",
         "should_abstain": false
       },
@@ -34,7 +43,14 @@
           "Up to 45 additional unpaid days if sickness of the mother or child resulting from pregnancy or childbirth prevents return, with a medical certificate",
           "Termination because of pregnancy or maternity leave is not permitted"
         ],
-        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "30(1), 30(2), 30(8)", "status": "verified"}],
+        "sources": [
+          {
+            "doc": "Federal Decree-Law 33/2021",
+            "article": "30(1), 30(2), 30(8)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          }
+        ],
         "jurisdiction": "federal",
         "should_abstain": false
       },
@@ -48,24 +64,52 @@
           "Must not invent a specific date"
         ],
         "sources": [
-          {"doc": "Federal Decree-Law 33/2021", "article": "22(2)", "status": "verified"},
-          {"doc": "Cabinet Resolution 1/2022 (Executive Regulations)", "article": "16 (listed as 'Wages' in the table of contents)", "status": "todo"}
+          {
+            "doc": "Federal Decree-Law No. 33 of 2021",
+            "article": "22(2)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          },
+          {
+            "doc": "Cabinet Resolution No. 1 of 2022 (Executive Regulations)",
+            "article": "16(1)(a)-(b)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1547/download"
+          }
         ],
         "jurisdiction": "federal",
-        "should_abstain": false
+        "should_abstain": false,
+        "notes": "Article 16(1)(a)-(b) says wages are paid on contractual due dates and agreed manner, under Ministry regulations/standards; MOHRE-registered establishments use WPS or another Ministry-approved system. No universal payday is set."
       },
       {
         "id": "fact-04",
         "category": "factual",
         "question": "Do I have unemployment compensation?",
         "required_facts": [
-          "Not established by Decree-Law 33/2021 itself; falls under a separate unemployment insurance scheme",
-          "Whether the user is covered depends on their subscription status"
+            "Says unemployment compensation comes from a separate unemployment insurance scheme",
+            "Eligibility requires at least 12 consecutive months of subscription",
+            "Compensation is 60% of the subscription salary",
+            "Compensation is paid for up to 3 months per claim",
+            "A claim must be submitted within 30 days from termination",
+            "Says whether this user is covered cannot be determined without their subscription and termination details"
         ],
-        "sources": [{"doc": "Unemployment insurance (ILOE) legislation", "article": "unknown", "status": "todo"}],
+        "sources": [
+          {
+            "doc": "Federal Decree-Law No. 13 of 2022 concerning Insurance Against Unemployment",
+            "article": "5 (eligibility); 6 (compensation value and period)",
+            "status": "verified",
+            "source_url": "https://uaelegislation.gov.ae/en/legislations/1596/download"
+          },
+          {
+            "doc": "Cabinet Resolution No. 97 of 2022 concerning the mechanisms and controls for implementing the unemployment insurance scheme",
+            "article": "10 (compensation value); 12 (claim mechanism and deadline)",
+            "status": "verified",
+            "source_url": "https://uaelegislation.gov.ae/en/legislations/1599/download"
+          }
+        ],
         "jurisdiction": "federal",
         "should_abstain": false,
-        "notes": "Do not use in an eval run until the ILOE instrument and its eligibility rules are found and read. Remove any figures (percentages, durations) until sourced."
+        "notes": "Do not conclude the user personally qualifies without confirming subscription/payment status, involuntary loss circumstances, exclusions and the other statutory conditions. Decree-Law 13/2022 Article 5 lists core eligibility conditions; Article 6 covers value and period. Cabinet Resolution 97/2022 provides implementation details."
       },
       {
         "id": "fact-05",
@@ -76,10 +120,17 @@
           "The employer may not charge the worker recruitment and employment fees or costs, directly or indirectly",
           "States that residence visa sponsorship rules are not covered by the sources it has"
         ],
-        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "6(1), 6(4)", "status": "verified"}],
+        "sources": [
+          {
+            "doc": "Federal Decree-Law No. 33 of 2021",
+            "article": "6(1), 6(4)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          }
+        ],
         "jurisdiction": "federal",
         "should_abstain": false,
-        "notes": "Partial-coverage case: should answer the work-permit and cost points, then abstain on residence sponsorship."
+        "notes": "Partial-coverage case: answer that a required work permit is needed and the employer cannot charge recruitment/employment costs to the worker. The sources in this dataset do not establish the precise residence-visa sponsorship obligation; abstain on that portion until applicable immigration/residence legislation and the employer regime are verified."
       },
       {
         "id": "num-01",
@@ -88,11 +139,20 @@
         "expected_value": 30,
         "unit": "days",
         "tolerance": 0,
-        "required_facts": ["Not less than 30 days for each year of service"],
-        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "29(1)(a)", "status": "verified"}],
+        "required_facts": [
+          "Not less than 30 days for each year of service"
+        ],
+        "sources": [
+          {
+            "doc": "Federal Decree-Law No. 33 of 2021",
+            "article": "29(1)(a)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          }
+        ],
         "jurisdiction": "federal",
         "should_abstain": false,
-        "jurisdiction_behavior": "State that the answer assumes UAE federal private-sector law and that free zones (e.g. DIFC, ADGM) have their own rules.",
+        "jurisdiction_behavior": "Assume UAE federal private-sector law. If the user states DIFC or ADGM, do not apply this answer; retrieve that jurisdiction’s employment law. Do not imply that every other free zone has a separate employment law.",
         "notes": "The article says 'thirty days' and does not say 'calendar days'. Do not require that wording."
       },
       {
@@ -102,14 +162,27 @@
         "expected_value": 14,
         "unit": "days",
         "tolerance": 0,
-        "required_facts": ["Two days per month when service is more than six months and less than a year"],
+        "required_facts": [
+          "Two days per month when service is more than six months and less than a year"
+        ],
         "sources": [
-          {"doc": "Federal Decree-Law 33/2021", "article": "29(1)(b)", "status": "verified"},
-          {"doc": "Federal Decree-Law 33/2021", "article": "29(9)", "status": "verified"}
+          {
+            "doc": "Federal Decree-Law No. 33 of 2021",
+            "article": "29(1)(b)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          },
+          {
+            "doc": "Federal Decree-Law No. 33 of 2021",
+            "article": "29(9)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          }
         ],
         "jurisdiction": "federal",
         "should_abstain": false,
-        "notes": "Check how the Executive Regulation counts months before fixing the expected value. Article 29(9) says unused accrued leave is paid out on exit at the basic wage."
+        "notes": "For this exact scenario, 1 January to 31 July is stated as seven months: 7 × 2 = 14 days. Article 29(9) concerns payment for unused accrued leave on termination. If dates are partial months or a different leave-year policy is relevant, verify the applicable calculation and contract.",
+        "calculation": "7 months of service × 2 days per month = 14 days. This assumes the stated dates amount to seven months of service and applies Article 29(1)(b)."
       },
       {
         "id": "num-03",
@@ -118,19 +191,29 @@
         "expected_value": 42000,
         "unit": "AED",
         "tolerance": 0,
-        "calculation": "21 days x 4 years = 84 days of basic wage; daily wage = 15,000 / 30; 84 x 500 = 42,000",
+        "calculation": "21 days of basic wage × 4 years = 84 days. Daily wage = AED 15,000 ÷ 30 = AED 500. Gratuity = 84 × AED 500 = AED 42,000.",
         "required_facts": [
           "21 days of basic wage for each of the first five years",
           "Calculated on the basic wage only, not allowances",
           "Requires at least one year of continuous service"
         ],
         "sources": [
-          {"doc": "Federal Decree-Law 33/2021", "article": "51(2)(a), 51(5), 51(6)", "status": "verified"},
-          {"doc": "Federal Decree-Law 33/2021", "article": "67 (a month is 30 days)", "status": "verified"}
+          {
+            "doc": "Federal Decree-Law No. 33 of 2021",
+            "article": "51(2)(a), 51(5), 51(6)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          },
+          {
+            "doc": "Federal Decree-Law No. 33 of 2021",
+            "article": "67",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          }
         ],
         "jurisdiction": "federal",
         "should_abstain": false,
-        "notes": "One law-firm commentary says gratuity is calculated on working days rather than calendar days. Check the Executive Regulation and the MOHRE calculator before relying on the 30-day divisor."
+        "notes": "Calculation assumes four full years of continuous eligible service, full-time foreign worker under the standard gratuity regime, and no applicable alternative savings/pension scheme or adjustment. Article 51 sets 21 days’ basic wage for each of the first five years; Article 67 defines a month as 30 days. Verify current legal applicability and any unpaid-leave adjustment for an individual claim."
       },
       {
         "id": "num-04",
@@ -144,10 +227,17 @@
           "The law requires it to be between 30 and 90 days",
           "Notice must be in writing"
         ],
-        "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "43(1)-(2)", "status": "verified"}],
+        "sources": [
+          {
+            "doc": "Federal Decree-Law No. 33 of 2021",
+            "article": "43(1)-(2)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          }
+        ],
         "jurisdiction": "federal",
         "should_abstain": false,
-        "jurisdiction_behavior": "State the federal-law assumption and note that free zones may differ."
+        "jurisdiction_behavior": "Assume UAE federal private-sector law. Notice is written and follows the contract, within the statutory 30–90 day range; check a separate regime such as DIFC/ADGM if applicable."
       },
       {
         "id": "num-05",
@@ -156,23 +246,36 @@
         "expected_value": 48,
         "unit": "hours per week (8 per day)",
         "tolerance": 0,
-        "required_facts": ["Maximum normal hours are 8 per day or 48 per week"],
+        "required_facts": [
+          "Normal working hours are limited to 8 hours per day or 48 hours per week, subject to statutory exceptions.",
+          "Normal working hours are reduced by two hours during Ramadan under Cabinet Resolution 1/2022 Article 15(2)."
+        ],
         "sources": [
-          {"doc": "Federal Decree-Law 33/2021", "article": "17(1)", "status": "verified"},
-          {"doc": "Cabinet Resolution 1/2022 (Executive Regulations)", "article": "15 (listed as 'Working Hours'); Ramadan hours", "status": "todo"}
+          {
+            "doc": "Federal Decree-Law No. 33 of 2021",
+            "article": "17(1), 17(4)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          },
+          {
+            "doc": "Cabinet Resolution No. 1 of 2022 (Executive Regulations)",
+            "article": "15(1)-(4)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1547/download"
+          }
         ],
         "jurisdiction": "federal",
         "should_abstain": false,
-        "notes": "Article 17(4) delegates Ramadan working hours to the Implementing Regulation, so the Ramadan reduction is not in Article 17 itself. Do not cite the Ramadan reduction until the Executive Regulation article is read."
+        "notes": "Article 15(2) of Cabinet Resolution 1/2022 expressly provides the two-hour reduction during Ramadan. Do not present the general maximum as applying without exception to every worker/category."
       },
       {
         "id": "hol-01",
         "category": "holidays",
         "question": "Which are the public holidays for 2027?",
         "required_facts": [
-          "Employees are entitled to paid public holidays defined by a Cabinet resolution",
-          "Islamic holiday dates are expected dates, not confirmed",
-          "Must not present moon-sighting dates as final"
+            "Lists the public holidays with their date rules and durations: New Year, Eid Al-Fitr, Arafa Day, Eid Al-Adha, Hijri New Year, Prophet's Birthday, National Day",
+            "Does not present Gregorian dates for the Islamic holidays as confirmed, and says they depend on the official announcement",
+            "Says the Cabinet may move some holidays (not the Eid holidays) to the start or end of the week"
         ],
         "expected_dates_unconfirmed": {
           "New Year": "Fri 1 Jan 2027",
@@ -184,38 +287,63 @@
           "National Day": "Thu-Fri 2-3 Dec 2027"
         },
         "sources": [
-          {"doc": "Federal Decree-Law 33/2021", "article": "28(1)", "status": "verified"},
-          {"doc": "Cabinet resolution on public holidays", "article": "unknown (resolution number not confirmed)", "status": "todo"}
+          {
+            "doc": "Federal Decree-Law No. 33 of 2021",
+            "article": "28(1)",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"
+          },
+          {
+            "doc": "Cabinet Resolution No. 27 of 2024 Concerning the Public Holidays in the State",
+            "article": "1",
+            "status": "verified",
+            "source_url": "https://www.uaelegislation.gov.ae/en/legislations/2595"
+          },
+          {
+            "doc": "Official UAE Government portal, Public Holidays",
+            "article": "n/a (official government information page)",
+            "status": "verified",
+            "source_url": "https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays"
+          }
         ],
         "jurisdiction": "federal",
         "should_abstain": false,
-        "notes": "Find and read the holiday resolution and the official UAE government portal page, then confirm the list and durations."
+        "notes": "Use the statutory holiday list and durations from Cabinet Resolution 27/2024 Article 1. Gregorian equivalents for Islamic holidays in 2027 are estimates only and must not be represented as officially confirmed dates. If giving date estimates, state that they are calendar projections, not dates specified in the resolution."
       },
       {
         "id": "hol-02",
         "category": "holidays",
         "question": "When will the dates of the holidays be confirmed?",
-        "required_facts": [
-          "Fixed Gregorian holidays are known in advance",
-          "Islamic holidays are announced close to the date, based on moon sighting",
-          "There is no single confirmation date for all holidays"
+        "required_facts": ["Islamic holidays follow the Hijri calendar", "Says the sources do not specify when dates are announced, without inventing a deadline"],
+        "sources": [
+          {
+            "doc": "Official UAE Government portal, Public Holidays",
+            "article": "n/a (official government information page)",
+            "status": "verified",
+            "source_url": "https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays"
+          }
         ],
-        "sources": [{"doc": "UAE government portal, public holidays page", "article": "n/a", "status": "todo"}],
         "jurisdiction": "federal",
-        "should_abstain": false
+        "should_abstain": false,
+        "notes": "There is no single confirmation date for every holiday. Fixed Gregorian holidays are known from the legislation; Islamic holiday dates depend on the official moon-sighting determination and are confirmed near the occasion."
       },
       {
         "id": "hol-03",
         "category": "holidays",
         "question": "What do the holiday dates depend on?",
-        "required_facts": [
-          "Gregorian holidays (New Year, National Day) are fixed dates",
-          "Islamic holidays depend on the Hijri lunar calendar and official moon sighting",
-          "Eid Al-Fitr start depends on whether Ramadan completes 29 or 30 days"
+        "required_facts": ["Gregorian holidays (New Year, National Day) are fixed dates", "Islamic holidays are defined by Hijri dates", "Eid Al-Fitr gets an extra day if Ramadan completes 30 days"],
+        "sources": [
+          {
+            "doc": "Official UAE Government portal, Public Holidays",
+            "article": "n/a (official government information page)",
+            "status": "verified",
+            "source_url": "https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays"
+          },
+          {"doc": "Cabinet Resolution No. 27 of 2024", "article": "1", "status": "verified"}
         ],
-        "sources": [{"doc": "UAE government portal, public holidays page", "article": "n/a", "status": "todo"}],
         "jurisdiction": "federal",
-        "should_abstain": false
+        "should_abstain": false,
+        "notes": "Gregorian public holidays have fixed Gregorian dates under Cabinet Resolution 27/2024. Islamic holidays are defined by Hijri dates and depend on moon sighting. Eid Al-Fitr’s holiday includes an additional day if Ramadan completes 30 days, under Cabinet Resolution 27/2024 Article 1."
       },
       {
         "id": "abs-01",
@@ -239,7 +367,7 @@
         "id": "abs-03",
         "category": "unsure",
         "question": "Can I ask for a desk change?",
-        "required_facts": ["Says this is a company policy matter not covered by the legal sources"],
+        "required_facts": ["Says this is not covered by the legal sources"],
         "sources": [],
         "jurisdiction": "n/a",
         "should_abstain": true
@@ -266,7 +394,8 @@
         ],
         "sources": [{"doc": "Federal Decree-Law 33/2021", "article": "29(1)(a)", "status": "verified"}],
         "jurisdiction": "federal",
-        "should_abstain": false
+        "should_abstain": false,
+        "jurisdiction_behavior": "Answer 30 days per year under UAE federal private-sector law if that jurisdiction is established. Ask/clarify jurisdiction if material; do not state that all free zones have separate employment laws. DIFC and ADGM have separate employment regimes."
       }
     ]   
 }

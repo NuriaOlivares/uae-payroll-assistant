@@ -1,0 +1,218 @@
+{
+  "meta": {
+    "version": "0.1",
+    "created": "2026-11-22",
+    "purpose": "Held-out test set. Run only for final reporting, never while tuning. Report separately from the development set (seed_questions.json).",
+    "default_jurisdiction": "UAE federal private sector (Federal Decree-Law 33/2021 as amended)",
+    "authoring_note": "Drafted by Claude Code on 2026-11-22 from the official text in data/processed/*.jsonl, before any retrieval or answer run on these questions. Caveat: the drafter had seen the development-set results, so this set is not fully blind. Owner reviews and edits it before the first run.",
+    "coverage": "Paraphrases of development topics with different wording, two- and three-article questions, gratuity above 5 years with a partial year, a premise trap (allowances), an under-one-year trap, partial coverage (minimum wage), out-of-corpus abstention (tax) and a second free-zone jurisdiction (ADGM).",
+    "source_status_legend": {
+      "verified": "Article text checked against the ingested official text.",
+      "partially_verified": "Some legal points are supported, but the question extends beyond the verified source coverage.",
+      "todo": "Not verified yet."
+    },
+    "note": "Evaluation material for a software project. Not legal advice."
+  },
+  "items": [
+    {
+      "id": "ho-01",
+      "category": "factual",
+      "question": "I finished my probation a while ago and I've been off ill for 20 days so far this year. How much of that time is paid?",
+      "required_facts": [
+        "The first 15 days of sick leave are on full pay",
+        "The following 30 days are on half pay, so the remaining 5 of the 20 days are on half pay",
+        "The worker must notify the employer within 3 business days and submit a medical report"
+      ],
+      "sources": [
+        {"doc": "Federal Decree-Law No. 33 of 2021", "article": "31(1), 31(3)", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"}
+      ],
+      "jurisdiction": "federal",
+      "should_abstain": false,
+      "notes": "Paraphrase of fact-01 using 'off ill' instead of 'sick leave'. Art. 31(4) (no pay if illness results from misconduct) is not required."
+    },
+    {
+      "id": "ho-02",
+      "category": "factual",
+      "question": "My wife just gave birth. Do I get any paid time off as the dad?",
+      "required_facts": [
+        "Paid parental leave of 5 working days",
+        "Can be taken continuously or intermittently within 6 months of the child's birth"
+      ],
+      "sources": [
+        {"doc": "Federal Decree-Law No. 33 of 2021", "article": "32(1)(b)", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"},
+        {"doc": "Cabinet Resolution No. 1 of 2022 (Executive Regulations)", "article": "21(4)", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1547/download"}
+      ],
+      "jurisdiction": "federal",
+      "should_abstain": false,
+      "notes": "Colloquial wording ('dad', 'time off'); the law says 'parental leave'. CR 1/2022 Art. 21(4) adds proof of birth; not a required fact. Must not answer with maternity leave."
+    },
+    {
+      "id": "ho-03",
+      "category": "numeric",
+      "question": "My basic salary is AED 9,000 a month and I'm leaving after 7 and a half years with the same company. What end-of-service gratuity should I get?",
+      "expected_value": 54000,
+      "unit": "AED",
+      "tolerance": 0,
+      "calculation": "First 5 years: 5 x 21 = 105 days. Remaining 2.5 years: 2.5 x 30 = 75 days. Total 180 days. Daily wage = 9,000 / 30 = 300. Gratuity = 180 x 300 = AED 54,000. Cap (two years' wage) not reached.",
+      "required_facts": [
+        "21 days of basic wage for each of the first five years",
+        "30 days of basic wage for each year after the first five",
+        "Parts of a year are paid in proportion to the time worked"
+      ],
+      "sources": [
+        {"doc": "Federal Decree-Law No. 33 of 2021", "article": "51(2), 51(3)", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"},
+        {"doc": "Federal Decree-Law No. 33 of 2021", "article": "67", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"}
+      ],
+      "jurisdiction": "federal",
+      "should_abstain": false,
+      "notes": "Gratuity above 5 years with a partial year. Assumes a foreign full-time worker, continuous service, no unpaid absence (Art. 51(4)) and no alternative savings scheme (Art. 51(8)). Art. 67: a month is 30 days."
+    },
+    {
+      "id": "ho-04",
+      "category": "numeric",
+      "question": "I earn AED 20,000 a month in total: AED 12,000 basic plus AED 8,000 housing and transport allowances. I've worked here 3 years. How much gratuity will I get?",
+      "expected_value": 25200,
+      "unit": "AED",
+      "tolerance": 0,
+      "calculation": "3 x 21 = 63 days. Daily basic wage = 12,000 / 30 = 400. Gratuity = 63 x 400 = AED 25,200. Using the total salary would wrongly give AED 42,000.",
+      "required_facts": [
+        "Gratuity is calculated on the basic wage only, not the allowances",
+        "21 days of basic wage for each of the first five years"
+      ],
+      "sources": [
+        {"doc": "Federal Decree-Law No. 33 of 2021", "article": "51(2), 51(5)", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"}
+      ],
+      "jurisdiction": "federal",
+      "should_abstain": false,
+      "notes": "Premise trap: the question leads with the total salary. The tool must be called with 12,000, not 20,000."
+    },
+    {
+      "id": "ho-05",
+      "category": "numeric",
+      "question": "I'm leaving after 10 months. My basic is AED 8,000. How much gratuity do I get?",
+      "required_facts": [
+        "No end-of-service gratuity, because it requires at least one year of continuous service",
+        "Does not compute a pro-rata gratuity for the 10 months"
+      ],
+      "sources": [
+        {"doc": "Federal Decree-Law No. 33 of 2021", "article": "51(2), 51(3)", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"}
+      ],
+      "jurisdiction": "federal",
+      "should_abstain": false,
+      "notes": "Trap: Art. 51(3) pays parts of a year pro rata only once one year is completed. No expected_value: the right answer is 'none', and the numeric check would only look for the digit 0. No 'calculation' key, so a tool call is not required."
+    },
+    {
+      "id": "ho-06",
+      "category": "factual",
+      "question": "I'm still on probation and another company in Dubai has offered me a job. How much notice do I have to give my current employer?",
+      "required_facts": [
+        "At least one month's notice",
+        "The notice must be in writing",
+        "The new employer compensates the original employer for recruitment costs unless agreed otherwise"
+      ],
+      "sources": [
+        {"doc": "Federal Decree-Law No. 33 of 2021", "article": "9(3)", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"}
+      ],
+      "jurisdiction": "federal",
+      "should_abstain": false,
+      "notes": "Must not answer with the 14 days that apply when leaving the State (9(4)) or when the employer terminates (9(1)), nor with the 30-90 day rule of Art. 43. Assumes a mainland Dubai employer; DIFC would be out of scope."
+    },
+    {
+      "id": "ho-07",
+      "category": "factual",
+      "question": "My manager wants me to stay 3 extra hours every day. Is that allowed, and do I get paid more for it?",
+      "required_facts": [
+        "Normal working hours are at most 8 per day or 48 per week",
+        "Overtime may not exceed 2 hours per day, except under conditions in the Executive Regulation",
+        "Total working hours may not exceed 144 hours every 3 weeks",
+        "Overtime is paid at the normal hourly wage based on the basic wage plus at least 25%",
+        "At least 50% extra for overtime between 10 pm and 4 am (shift workers excluded)"
+      ],
+      "sources": [
+        {"doc": "Federal Decree-Law No. 33 of 2021", "article": "17(1)", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"},
+        {"doc": "Federal Decree-Law No. 33 of 2021", "article": "19(1)-(3)", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"}
+      ],
+      "jurisdiction": "federal",
+      "should_abstain": false,
+      "notes": "Two-article question. The 10 pm-4 am fact checks that the answer is complete; the owner may drop it if it seems incidental (see the num-05 commuting-fact lesson)."
+    },
+    {
+      "id": "ho-08",
+      "category": "numeric",
+      "question": "My employer ended my contract (not for disciplinary reasons). I have paid into the unemployment insurance scheme for 18 months and my basic salary is AED 40,000. How much would I get each month, and for how long?",
+      "expected_value": 20000,
+      "unit": "AED per month",
+      "tolerance": 0,
+      "required_facts": [
+        "Compensation is 60% of the subscription salary",
+        "Capped at AED 20,000 per month for this salary level (second category, subscription salary above AED 16,000), so AED 20,000 rather than AED 24,000",
+        "Paid for up to 3 months per claim",
+        "The claim must be submitted within 30 days of the end of employment"
+      ],
+      "sources": [
+        {"doc": "Federal Decree-Law No. 13 of 2022 concerning Insurance Against Unemployment", "article": "5(1), 6(1)", "status": "verified", "source_url": "https://uaelegislation.gov.ae/en/legislations/1596/download"},
+        {"doc": "Cabinet Resolution No. 97 of 2022", "article": "7(1), 9(5), 10(1)", "status": "verified", "source_url": "https://uaelegislation.gov.ae/en/legislations/1599/download"}
+      ],
+      "jurisdiction": "federal",
+      "should_abstain": false,
+      "notes": "Two-document question with a cap. 60% x 40,000 = 24,000, capped at 20,000. No calculator tool exists for this, so no 'calculation' key. Other conditions (premiums paid, legal residence, CR 97/2022 Art. 9) are not required facts."
+    },
+    {
+      "id": "ho-09",
+      "category": "holidays",
+      "question": "How many days off do private-sector employees get for Eid al-Adha?",
+      "required_facts": [
+        "Arafa Day (9 Dhu al-Hijjah) is 1 day",
+        "Eid Al-Adha is 3 days, 10 to 12 Dhu al-Hijjah",
+        "Does not present Gregorian dates as confirmed"
+      ],
+      "sources": [
+        {"doc": "Cabinet Resolution No. 27 of 2024 Concerning the Public Holidays in the State", "article": "1", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/2595"}
+      ],
+      "jurisdiction": "federal",
+      "should_abstain": false,
+      "notes": "Answering '4 days' (Arafa + Eid) or listing them separately are both fine."
+    },
+    {
+      "id": "ho-10",
+      "category": "partial",
+      "question": "What is the minimum wage in the UAE?",
+      "required_facts": [
+        "The Decree-Law lets the Cabinet set a minimum wage by resolution",
+        "Says its sources do not state a minimum wage amount, and does not invent one"
+      ],
+      "sources": [
+        {"doc": "Federal Decree-Law No. 33 of 2021", "article": "27", "status": "verified", "source_url": "https://www.uaelegislation.gov.ae/en/legislations/1541"}
+      ],
+      "jurisdiction": "federal",
+      "should_abstain": false,
+      "notes": "Partial coverage: the enabling article is in the corpus, but no figure is. Tests hallucination of a number."
+    },
+    {
+      "id": "ho-11",
+      "category": "unsure",
+      "question": "How much income tax will be deducted from my salary?",
+      "required_facts": [
+        "Says tax is not covered by its employment-law sources",
+        "Does not state a tax rate or amount"
+      ],
+      "sources": [],
+      "jurisdiction": "n/a",
+      "should_abstain": true,
+      "notes": "Out-of-corpus abstention. Nothing in data/processed mentions income tax."
+    },
+    {
+      "id": "ho-12",
+      "category": "jurisdiction",
+      "question": "I work for a company registered in ADGM. What notice period do I have to give?",
+      "required_facts": [
+        "Says its sources cover UAE federal private-sector law only, not ADGM",
+        "Does not give the federal 30-90 day rule as if it applied to ADGM"
+      ],
+      "sources": [],
+      "jurisdiction": "adgm",
+      "should_abstain": true,
+      "notes": "Second free-zone jurisdiction (development set only tests DIFC)."
+    }
+  ]
+}

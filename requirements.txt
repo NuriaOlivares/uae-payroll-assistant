@@ -1,0 +1,6 @@
+chromadb
+anthropic
+fastapi
+uvicorn
+pdfplumber
+pytest
